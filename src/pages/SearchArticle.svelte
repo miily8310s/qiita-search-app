@@ -1,5 +1,6 @@
 <script lang="ts">
   import SearchBar from "../components/SearchBar.svelte";
+  import Spinner from '../components/Spinner.svelte'
   
   import type { ArticleItem } from '../repositories/article';
   import RepositoryFactory, { ARTICLE } from '../repositories/RepositoryFactory';
@@ -28,7 +29,7 @@
   <SearchBar bind:value={query} />
 </form>
 
-<div class="text-center mt-4">
+<div class="container">
   {#if empty}
     <div>検索結果が見つかりませんでした。</div>
   {:else}
@@ -37,12 +38,30 @@
     {/each}
   {/if}
   {#await promise}
-    <div class="flex justify-center">
-      <!-- <Spinner /> -->
+    <div class="contaner_loading">
+      <Spinner />
     </div>
     {:catch e}
-      <span class="text-red-600 text-sm">
+      <span class="container_error">
         {e.message}
       </span>
   {/await}
 </div>
+
+<style>
+  .container {
+    text-align: center;
+    margin-top: 1rem;
+  }
+  .contaner_loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container_error {
+    --tw-text-opacity: 1;
+    color: rgba(220, 38, 38, var(--tw-text-opacity));
+    font-size: 0.875rem;
+    line-height: 1.25rem;
+  }
+</style>

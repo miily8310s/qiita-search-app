@@ -22,8 +22,8 @@
   button {
     width: auto;
     display: flex;
-    justify-items: flex-end;
     align-items: center;
     padding: 1rem;
+    width: 1rem;
   }
 </style>
