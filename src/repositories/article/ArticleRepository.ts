@@ -3,7 +3,7 @@ import { httpClient } from '../httpClient';
 
 export class ArticleRepository implements ArticleRepositoryInterface {
   async get(params: Params) {
-    const { data } = await httpClient.get<ArticleItem[]>('/', { params });
+    const { data } = await httpClient.get<ArticleItem[]>('', { params });
     return data;
   }
 
