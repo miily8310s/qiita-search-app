@@ -1,22 +1,19 @@
 <script lang="ts">
 	import Header from './components/Header.svelte'
-	export let name: string;
+	import Router from 'svelte-spa-router'
+	import { routes } from "./router";
 </script>
 
 <Header />
 <main>
 	<div class="container">
-    <h1>Hello {name}!</h1>
-		<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+    <Router {routes} />
 	</div>
 </main>
 
 <style>
 	main {
 		padding-top: 1rem;
-	}
-	h1 {
-		font-size: 1.2rem;
 	}
 	.container {
 		margin-left: auto;
