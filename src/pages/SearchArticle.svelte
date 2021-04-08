@@ -31,23 +31,24 @@
 </form>
 
 <div class="container">
-  {#if empty}
-    <div>検索結果が見つかりませんでした。</div>
-  {:else}
-    {#each articles as article (article.id)}
-      <!-- <div>{article.title}</div> -->
-      <ArticleCard {article} />
-    {/each}
-  {/if}
-  {#await promise}
-    <div class="contaner_loading">
-      <Spinner />
-    </div>
-    {:catch e}
-      <span class="container_error">
-        {e.message}
-      </span>
-  {/await}
+  <div class="article-row">
+    {#if empty}
+      <div>検索結果が見つかりませんでした。</div>
+    {:else}
+      {#each articles as article (article.id)}
+        <ArticleCard {article} />
+      {/each}
+    {/if}
+    {#await promise}
+      <div class="contaner_loading">
+        <Spinner />
+      </div>
+      {:catch e}
+        <span class="container_error">
+          {e.message}
+        </span>
+    {/await}
+  </div>
 </div>
 
 <style>
@@ -65,5 +66,10 @@
     color: rgba(220, 38, 38, var(--tw-text-opacity));
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+  .article-row {
+    display: grid;
+    grid-template-rows: repeat(5, minmax(0, 1fr));
+    grid-auto-flow: column;
   }
 </style>

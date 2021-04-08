@@ -7,21 +7,18 @@
     : 'http://placehold.jp/eeeeee/cccccc/160x120.png?text=No%20Image'
   
   $: description = article.rendered_body
-    ? `${article.body.slice(0, 100)}...`
+    ? `${article.body.slice(0, 200)}...`
     : ''
 
 </script>
 
 <div class="article">
-  <div class="article_image" style={`background-image: url('${src}')`}>
-  </div>
+  <!-- <div class="article_image" style={`background-image: url('${src}')`} /> -->
   <div class="article_body">
-    <div class="my-4">
-      <div class="text-black font-bold text-xl mb-2">{article.title}</div>
-      <p class="text-grey-darker text-sm break-words w-9/12 m-auto">
-        {description}
-      </p>
-    </div>
+    <div class="article_body_title">{article.title}</div>
+    <p class="text-grey-darker">
+      {description}
+    </p>
   </div>
 </div>
 
@@ -30,15 +27,24 @@
     width: 100%;
     display: flex;
     flex-direction: row;
-  }
-  .article_image {
-    flex: none;
-    height: 24rem;
-    background-size: cover;
-    overflow: hidden;
+    height: 16rem;
+    margin-top: 3rem;
+    padding: 1rem;
+    border-width: 2px;
+    --tw-border-opacity: 1;
+    border-color: rgba(249, 250, 251, var(--tw-border-opacity));
   }
   .article_body {
     display: flex;
     flex-direction: column;
+    margin-left: 1rem;
+    text-align: left;
+    width: 100%;
+  }
+
+  .article_body_title {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+    font-weight: 700;
   }
 </style>

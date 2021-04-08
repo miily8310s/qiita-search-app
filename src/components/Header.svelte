@@ -17,7 +17,6 @@
     font-weight: 600;
   }
   .header-text {
-    width: 100%;
     display: flex;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
