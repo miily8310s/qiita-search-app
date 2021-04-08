@@ -3,14 +3,13 @@
   import Spinner from '../components/Spinner.svelte'
   import ArticleCard from '../components/ArticleCard.svelte'
   
-  import type { ArticleItem } from '../repositories/article';
   import RepositoryFactory, { ARTICLE } from '../repositories/RepositoryFactory';
+  import { articles } from '../store/article'
   const ArticleRepository = RepositoryFactory[ARTICLE];
 
   let query = ''
   let empty = false
   let promise: Promise<void>
-  let articles: ArticleItem[] = []
 
   const handleSubmit = () => {
     if (!query.trim()) return
@@ -18,11 +17,11 @@
   }
 
   const getArticles = async () => {
-    articles = []
+    $articles = []
     empty = false
     const result = await ArticleRepository.get({ query })
     empty = result.length === 0
-    articles = result
+    $articles = result
   }
 </script>
 
@@ -35,7 +34,7 @@
     {#if empty}
       <div>検索結果が見つかりませんでした。</div>
     {:else}
-      {#each articles as article (article.id)}
+      {#each $articles as article (article.id)}
         <ArticleCard {article} />
       {/each}
     {/if}

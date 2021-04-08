@@ -4,20 +4,20 @@
 export interface ArticleItem {
   rendered_body: string;
   body: string;
-  coediting: string;
-  comments_count: string;
+  coediting?: string;
+  comments_count?: string;
   created_at: string;
-  group: ArticleGroup;
+  group?: ArticleGroup;
   id: string;
   likes_count: number;
-  private: boolean;
-  reactions_count: string;
-  tags: ArticleTags[];
+  private?: boolean;
+  reactions_count?: string;
+  tags?: ArticleTags[];
   title: string;
-  updated_at: string;
-  url: string;
-  user: ArticleUser;
-  page_views_count: number;
+  updated_at?: string;
+  url?: string;
+  user?: ArticleUser;
+  page_views_count?: number;
 }
 
 export interface ArticleGroup {
