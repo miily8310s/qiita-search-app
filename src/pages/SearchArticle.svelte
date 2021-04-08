@@ -1,6 +1,7 @@
 <script lang="ts">
   import SearchBar from "../components/SearchBar.svelte";
   import Spinner from '../components/Spinner.svelte'
+  import ArticleCard from '../components/ArticleCard.svelte'
   
   import type { ArticleItem } from '../repositories/article';
   import RepositoryFactory, { ARTICLE } from '../repositories/RepositoryFactory';
@@ -34,7 +35,8 @@
     <div>検索結果が見つかりませんでした。</div>
   {:else}
     {#each articles as article (article.id)}
-      <div>{article.title}</div>
+      <!-- <div>{article.title}</div> -->
+      <ArticleCard {article} />
     {/each}
   {/if}
   {#await promise}
