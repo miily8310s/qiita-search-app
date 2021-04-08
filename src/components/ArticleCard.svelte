@@ -1,5 +1,6 @@
 <script lang="ts">
   import type { ArticleItem } from '../repositories/article'
+  import { link } from "svelte-spa-router";
   export let article: ArticleItem
 
   $: src = article.user.profile_image_url 
@@ -13,9 +14,10 @@
 </script>
 
 <div class="article">
-  <!-- <div class="article_image" style={`background-image: url('${src}')`} /> -->
   <div class="article_body">
-    <div class="article_body_title">{article.title}</div>
+    <a href={`/articles/${article.id}`} use:link>
+      <div class="article_body_title">{article.title}</div>
+    </a>
     <p class="text-grey-darker">
       {description}
     </p>
