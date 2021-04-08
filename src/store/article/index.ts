@@ -1,4 +1,4 @@
-import { writable } from 'svelte/store';
+import { writable, derived } from 'svelte/store';
 import type { ArticleItem } from '../../repositories/article';
 
 const useArticleStore = () => {
@@ -12,3 +12,9 @@ const useArticleStore = () => {
 };
 
 export const articles = useArticleStore();
+
+export const find = (id: string) => {
+  return derived(articles, ($articles) =>
+    $articles.find((articles) => articles.id === id)
+  );
+};
