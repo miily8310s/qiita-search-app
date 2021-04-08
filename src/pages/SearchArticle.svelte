@@ -17,11 +17,11 @@
   }
 
   const getArticles = async () => {
-    $articles = []
+    articles.reset()
     empty = false
     const result = await ArticleRepository.get({ query })
     empty = result.length === 0
-    $articles = result
+    articles.add(result)
   }
 </script>
 
