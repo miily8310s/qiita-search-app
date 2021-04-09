@@ -1,6 +1,7 @@
 <script lang="ts">
   import Spinner from '../components/Spinner.svelte'
-import type { ArticleItem } from '../repositories/article';
+  import ArticleInfo from '../components/ArticleInfo.svelte'
+  import type { ArticleItem } from '../repositories/article';
   
   import RepositoryFactory, { ARTICLE } from '../repositories/RepositoryFactory';
   import { find, articles } from '../store/article'
@@ -29,7 +30,7 @@ import type { ArticleItem } from '../repositories/article';
       <Spinner />
     </div>
   {:then}
-    {$article.title}
+    <ArticleInfo article={$article} />
   {:catch e}
     <span class="text-red-600 text-sm">
       {e.message}
