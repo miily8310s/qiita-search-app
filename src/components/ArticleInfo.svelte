@@ -22,7 +22,7 @@
     <h3>
       {article.title}
     </h3>
-    <div class="border-t border-gray-200">
+    <div class="ArticleInfo">
       <dl>
         <Row dt="著者">
           {article.user.name}
@@ -46,3 +46,11 @@
     </div>
   </div>
 </div>
+
+<style>
+  .ArticleInfo {
+    border-top-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: rgba(229, 231, 235, var(--tw-border-opacity));
+  }
+</style>
